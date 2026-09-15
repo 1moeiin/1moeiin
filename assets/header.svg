@@ -1,1 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="300" viewBox="0 0 1000 300">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#010308"/>
+      <stop offset="100%" stop-color="#06142e"/>
+    </linearGradient>
+    <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#2a3a8f"/>
+      <stop offset="100%" stop-color="#0a0f3d"/>
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <style>
+    .neon{stroke:#19f0ff;fill:none;stroke-width:6;stroke-linejoin:round;animation:flicker 5s infinite}
+    @keyframes flicker{0%,18%,22%,62%,64%,100%{opacity:1}20%,63%{opacity:.35}}
+    .draw{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 2.5s ease-out forwards,flicker 5s 2.5s infinite}
+    @keyframes draw{to{stroke-dashoffset:0}}
+    .trace{stroke:#19f0ff;stroke-width:1.6;fill:none;stroke-dasharray:6 200;animation:flow 3s linear infinite}
+    .trace-base{stroke:#19f0ff;stroke-width:1;fill:none;opacity:.35}
+    @keyframes flow{from{stroke-dashoffset:206}to{stroke-dashoffset:0}}
+    .node{fill:#19f0ff;animation:pulse 2s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:.4}50%{opacity:1}}
+    .name{font:900 76px 'Arial Black','Segoe UI',sans-serif;fill:#00ccff;letter-spacing:4px;opacity:0;animation:in 1s 1.2s ease-out forwards}
+    .sub{font:600 20px 'Consolas','Fira Code',monospace;fill:#8be9ff;opacity:0;animation:in 1s 2s ease-out forwards}
+    @keyframes in{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:translateX(0)}}
+    .cursor{fill:#19f0ff;animation:blink 1s steps(1) infinite}
+    @keyframes blink{50%{opacity:0}}
+    .scan{fill:#19f0ff;opacity:.06;animation:scan 4s linear infinite}
+    @keyframes scan{from{transform:translateY(-40px)}to{transform:translateY(320px)}}
+  </style>
+
+  <rect width="1000" height="300" rx="16" fill="url(#bg)"/>
+  <rect class="scan" width="1000" height="30"/>
+
+  <!-- logo "1" -->
+  <g transform="translate(90,30)">
+    <path d="M70 0 H150 V235 H100 V70 C80 90 55 105 20 115 L15 60 C40 50 58 30 70 0 Z" fill="url(#fill)" opacity=".9"/>
+    <path class="neon draw" d="M70 0 H150 V235 H100 V70 C80 90 55 105 20 115 L15 60 C40 50 58 30 70 0 Z" filter="url(#glow)"/>
+    <path class="trace-base" d="M60 -12 H165 V250 H90"/>
+    <path class="trace" d="M60 -12 H165 V250 H90"/>
+    <g>
+      <path class="trace-base" d="M112 20 V200 M125 40 V120 L135 135 V220 M138 30 V90"/>
+      <path class="trace" d="M112 20 V200 M125 40 V120 L135 135 V220 M138 30 V90" style="animation-duration:2.2s"/>
+      <circle class="node" cx="112" cy="20" r="3"/>
+      <circle class="node" cx="112" cy="205" r="5" fill="none" stroke="#19f0ff" stroke-width="1.5" style="animation-delay:.5s"/>
+      <circle class="node" cx="125" cy="40" r="3" style="animation-delay:1s"/>
+      <circle class="node" cx="135" cy="225" r="5" fill="none" stroke="#19f0ff" stroke-width="1.5" style="animation-delay:1.3s"/>
+      <circle class="node" cx="138" cy="30" r="5" fill="none" stroke="#19f0ff" stroke-width="1.5" style="animation-delay:.2s"/>
+    </g>
+  </g>
+
+  <!-- name -->
+  <text class="name" x="330" y="150" filter="url(#glow)">1MOEIIN</text>
+  <text class="sub" x="334" y="195">&gt; Python · Django · C++ · Tailwind · AI<tspan class="cursor">▌</tspan></text>
+
+  <!-- bottom circuit -->
+  <g transform="translate(330,225)">
+    <path d="M0 0 h10 l-6 12 h-10z M16 0 h10 l-6 12 h-10z M32 0 h10 l-6 12 h-10z" fill="#00ccff"/>
+    <path d="M52 0 h140 l-6 12 h-140z" fill="#00ccff"/>
+    <path class="trace-base" d="M0 28 H240 L255 14 H600"/>
+    <path class="trace" d="M0 28 H240 L255 14 H600" style="animation-duration:4s"/>
+    <path class="trace-base" d="M300 4 H460 L475 22 H600"/>
+    <path class="trace" d="M300 4 H460 L475 22 H600" style="animation-duration:3.4s;animation-delay:1s"/>
+    <circle class="node" cx="0" cy="28" r="4"/>
+    <circle class="node" cx="300" cy="4" r="4" style="animation-delay:.8s"/>
+  </g>
+</svg>
 
